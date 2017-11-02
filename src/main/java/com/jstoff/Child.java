@@ -1,8 +1,11 @@
 package com.jstoff;
 
+import org.apache.log4j.Logger;
+
 public class Child implements Runnable {
     private Halloween night;
     private int numberInLine;
+    private final Logger log = Logger.getLogger(this.getClass());
 
     public Child() {
         super();
@@ -14,7 +17,7 @@ public class Child implements Runnable {
 
     public Child(int childNumber, Halloween theNight) {
         super();
-        System.out.println("Child number " + childNumber + " was created");
+        log.info("Child number " + childNumber + " was created");
         night = theNight;
         numberInLine = childNumber;
     }

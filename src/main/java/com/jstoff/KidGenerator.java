@@ -1,11 +1,14 @@
 package com.jstoff;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.TimeUnit;
 
 public class KidGenerator implements Runnable {
 
     private Halloween night;
     private int currentNumber;
+    private final Logger log = Logger.getLogger(this.getClass());
 
     public KidGenerator() {
         super();
@@ -25,9 +28,9 @@ public class KidGenerator implements Runnable {
             threadChild.start();
 
             try {
-                TimeUnit.SECONDS.sleep((long)(Math.random() * 5));
+                TimeUnit.SECONDS.sleep((long)(Math.random() * 3));
             } catch (InterruptedException iex) {
-                iex.printStackTrace();
+                log.error("Issue with generator, sleep", iex);
             }
         }
     }
